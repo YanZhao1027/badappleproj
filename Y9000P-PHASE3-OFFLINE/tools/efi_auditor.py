@@ -51,6 +51,8 @@ def shown(v, secret=False):
     if isinstance(v, (list,dict)):
         return "[STRUCTURED-VALUE]"
     s = str(v)[:320]
+    # A boot argument may itself embed a private serial/token; do not reproduce it in review output.
+    s = " ".join("[SENSITIVE-ARG-REDACTED]" if re.search(r"serial|mlb|uuid|rom=|mac=|password|secret|token|ssid", token, re.I) else token for token in s.split())
     s = re.sub(r"\b[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}\b","[UUID]",s,flags=re.I)
     s = re.sub(r"\b(?:[0-9a-f]{2}[:-]){5}[0-9a-f]{2}\b","[MAC]",s,flags=re.I)
     return s
