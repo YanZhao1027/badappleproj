@@ -105,9 +105,8 @@ capture_text csr-nvram.txt /usr/sbin/nvram 7C436110-AB2A-4BBB-A880-FE41995C9F82:
 capture_text opencore-version.txt /usr/sbin/nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:opencore-version
 capture_text opencore-bootpath.txt /usr/sbin/nvram 4D1FDA02-38C7-4A6A-9CC6-4BCCA8B30102:boot-path
 # UUIDs and system IDs are removed. Never claim partition identity from this anonymized output.
-capture_text disk-list.txt /usr/sbin/diskutil list
-capture_text root-disk.txt /usr/sbin/diskutil info /
-capture_text efi-disks.txt /usr/sbin/diskutil list
+# Only allowlisted disk identifiers/classes, no volume names or raw partition UUIDs.
+capture_text disk-evidence.txt /bin/bash "$HERE/tools/disk_evidence.sh"
 
 # Enumerate relevant installed third-party names, not entire /Library or protected policy DB.
 KLIST="$OUT/.kext-inventory.partial"
