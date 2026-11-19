@@ -1,0 +1,28 @@
+# Private Y9000P hardware data and diagnostic reports
+**/analysis-output/
+**/run-*/
+**/Y9000P-Diagnostics/
+**/private/
+**/results/
+**/collector-output/
+**/efi-config-sanitized.json
+**/gpu-pci.json
+**/displays.json
+**/pci-profiler.json
+**/kext-loaded.txt
+**/boot-args.txt
+**/opencore-bootpath.txt
+# Absolutely no EFI images, boot configs, installers or firmware in public repo
+**/config.plist
+**/*.dmg
+**/*.tar.gz
+**/*.zip
+**/*.img
+**/*.iso
+**/*.efi
+**/*.kext/
+**/*.app/
+**/*.run
+**/__pycache__/
+**/*.pyc
+**/.DS_Store
