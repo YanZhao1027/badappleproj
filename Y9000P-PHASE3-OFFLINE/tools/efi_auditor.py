@@ -152,7 +152,10 @@ def assess(current, proposed, diagnostics):
                 if old!=new:
                     add("BLOCK","PROPOSED_SMBIOS_MUTATION",f"{group}.{key} changed")
                     diff(f"PlatformInfo.{group}.{key}",old,new,"Never auto-apply identity/model change","BLOCK")
-        watch=[("Misc","Security","SecureBootModel"),
+        watch=[("NVRAM","Add",APPLE,"boot-args"),
+               ("NVRAM","Add",APPLE,"csr-active-config"),
+               ("NVRAM","Delete",APPLE),
+               ("Misc","Security","SecureBootModel"),
                ("Kernel","Add"),("Kernel","Block"),
                ("UEFI","Quirks","ResizeGpuBars"),
                ("Booter","Quirks","ResizeAppleGpuBars")]
