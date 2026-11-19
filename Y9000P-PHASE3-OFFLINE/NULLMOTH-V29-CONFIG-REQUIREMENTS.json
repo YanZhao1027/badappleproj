@@ -1,0 +1,53 @@
+{
+  "schema": "nullmoth-v29-expectations-v1",
+  "version": "2.9",
+  "source_commit": "7412cdde81447f78da0ebb64216dc258d8beaedb",
+  "ogkm": "620.70.06",
+  "target": {
+    "macos": "26.7.3",
+    "architecture": "x86_64",
+    "vendor": "10DE",
+    "device": "2D59"
+  },
+  "required_boot_args": [
+    "nvfb=1",
+    "nvaccel=1",
+    "nvfbheads=4",
+    "-nvkmsnosmooth",
+    "amfi_get_out_of_my_way=0x1",
+    "amfi=0x80",
+    "ipc_control_port_options=0"
+  ],
+  "incompatible_boot_args": [
+    "nv_disable=1",
+    "-wegnoegpu",
+    "agdpmod=pikera"
+  ],
+  "conditional": {
+    "whatevergreen": "gfxrst=4"
+  },
+  "required_csr_bits": "0x0A43",
+  "secure_boot_model": "Disabled",
+  "kernel_add_order": [
+    "Lilu.kext",
+    "AMFIPass.kext"
+  ],
+  "kernel_block": {
+    "identifier": "com.apple.iokit.IONDRVSupport",
+    "strategy": "Exclude"
+  },
+  "forbidden_parallel": [
+    "WhateverXe.kext",
+    "IntelWhateverXe.kext"
+  ],
+  "no_efi_injection": [
+    "NVRM.kext",
+    "NVAccel.kext",
+    "NVRMFB.kext",
+    "NVRMAGDC.kext"
+  ],
+  "smbios_policy": "NEVER_AUTOMATIC",
+  "startup_efi_policy": "GPT_BOOT_PARTITION_INDEPENDENT_PROOF",
+  "apply_changes": false,
+  "note": "Reference only, not an authorized or guaranteed safe target configuration"
+}
