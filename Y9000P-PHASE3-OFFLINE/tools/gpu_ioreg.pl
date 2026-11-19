@@ -39,7 +39,7 @@ for my $node (@nodes) {
     $entry{$k eq 'subsystem-id'?'subsystem_id':'subsystem_vendor_id'}=$v if defined($v);
   }
   my %resources;
-  for my $k (qw(reg assigned-addresses IODeviceMemory AAPL,slot-name model device_type IOName IOPCIExpressLinkStatus IOPCIExpressLinkCapabilities IOPCIExpressLinkWidth IOPCIExpressLinkSpeed)){
+  for my $k (qw(reg assigned-addresses IODeviceMemory model device_type IOName IOPCIExpressLinkStatus IOPCIExpressLinkCapabilities IOPCIExpressLinkWidth IOPCIExpressLinkSpeed), 'AAPL,slot-name'){
     $resources{$k}=$f{$k} if exists($f{$k});
   }
   $entry{location_and_resource_clues}=\%resources;
