@@ -25,6 +25,7 @@ sub strip {
 sub txt {
   my($s)=@_;
   $s=strip($s);
+  $s =~ s{\b(?:serial|mlb|rom|uuid|mac|password|secret|token|ssid)=[^\s\r\n]+}{[SENSITIVE-ARG-REDACTED]}gim;
   $s =~ s{(^[^\n]*?\b(?:IOPlatformSerialNumber|SystemSerialNumber|BoardSerialNumber|Serial Number|SerialNumber|MLB|ROM|SystemUUID|Partition UUID|Volume UUID|Disk UUID|MAC Address|Ethernet Address|BSSID|SSID|Hostname|Computer Name|Password|Secret|Token|Credential)\b\s*(?:["']?\s*[:=]\s*|["']?\s+))[^\r\n]*}{1[REDACTED]}gim;
   return $s;
 }
